@@ -49,11 +49,11 @@ COPY characteristics FROM '/Users/JadeZhang/Downloads/characteristics.csv' DELIM
 COPY characteristic_reviews FROM '/Users/JadeZhang/Downloads/characteristic_reviews.csv' DELIMITER ',' CSV HEADER;
 
 --improve query time
-CREATE INDEX idx_productID on reviews(product_id);
-CREATE INDEX idx_photosID on photos(review_id);
-CREATE INDEX idx_charProID on characteristics(product_id);
-CREATE INDEX idx_charID on characteristic_reviews(characteristic_id);
-CREATE INDEX idx_charReviewID on characteristic_reviews(review_id);
+-- CREATE INDEX idx_productID on reviews(product_id);
+-- CREATE INDEX idx_photosID on photos(review_id);
+-- CREATE INDEX idx_charProID on characteristics(product_id);
+-- CREATE INDEX idx_charID on characteristic_reviews(characteristic_id);
+-- CREATE INDEX idx_charReviewID on characteristic_reviews(review_id);
 
 
 
