@@ -12,6 +12,7 @@ module.exports = {
       res.status(404).send("Error during get reviews request");
     }
     else{
+      //console.log(data);
       res.json(data);
     }
    });
@@ -23,61 +24,37 @@ module.exports = {
         res.status(400).send('Error during get metadata');
       }
       else{
-        res.json(data);//.send(200);
+        res.send(200).json(data);
       }
     });
   },
 
-  // putHelpful: function(req,res){
-  //  // console.log("postHelpful",req.params);
-  //   model.putHelpful(req.params.review_id,(err)=>{
-  //     if(err){
-  //       res.status(400).send('Error during post request for helpfulness');
-  //     }
-  //     else{
-  //       res.status(204);
-  //     }
-  //   })
-  // },
-  putHelpful: function(req, res){
-    const reviewId = parseInt(req.params.review_id, 10);
-    if (req.params.review_id === undefined || typeof reviewId !== 'number') {
-      res.status(400).send('Invalid review_id input');
-    } else {
-      model.putHelpful(reviewId, (err) => {
-        if (err) {
-          res.status(400).send(err);
-        } else {
-          res.status(204).send('updated');
-        }
-      });
-    }
+  putHelpful: function(req,res){
+   // console.log("postHelpful",req.params);
+    model.putHelpful(req.params.review_id,(err)=>{
+      if(err){
+        res.status(400).send('Error during post request for helpfulness');
+      }
+      else{
+        res.status(204).send("Successfully update helpfulness");
+        //res.sendStatus(204);
+      }
+    })
   },
 
-  putReport: function(req, res){
-    const reviewId = Number(req.params.review_id);
-    if (req.params.review_id === undefined || typeof reviewId !== 'number') {
-      res.status(400).send('Invalid review_id input');
-    } else {
-      model.putReport(reviewId, (err) => {
-          if (err) {
-            res.status(500).send(err);
-          } else {
-            res.status(204).send('updated');
-          }
-      })
-    }
+  putReport: function(req,res){
+    // if (req.params.review_id === undefined || typeof reviewId !== 'number') {
+    //   //     res.status(400).send('Invalid review_id input');
+    //   //   }
+    model.putReport(req.params.review_id,(err)=>{
+      if(err){
+        res.status(400).send('Err during post reported request');
+      }
+      else{
+        res.sendStatus(204);
+      }
+    })
   },
-  // putReport: function(req,res){
-  //   model.putReport(req.params.review_id,(err)=>{
-  //     if(err){
-  //       res.status(400).send('Err during post reported request');
-  //     }
-  //     else{
-  //       res.status(204);
-  //     }
-  //   })
-  // },
 
   addReview: function(req,res){
     model.postReview(req)
@@ -86,7 +63,6 @@ module.exports = {
       res.sendStatus(201)})
    // res.status(201).send("Successfully")})
     .catch(()=>{
-      console.log("test2");
       res.status(400).send("Err")});
   }
 

@@ -17,10 +17,10 @@ module.exports = {
     AND reported = FALSE
     ${sort}
     LIMIT ${count}
-    OFFSET ${count*page-count}
+    OFFSET ${count*(page-1)}
     `;
     db.query(queryString,(err,data)=>{
-     // console.log(err);
+      console.log(err);
       if(err){
         console.log('Err during get reviews in db');
       }
@@ -68,41 +68,30 @@ module.exports = {
     })
   },
 
-  // putHelpful: function(reviewId,callback){
-  //  // console.log('test: ',reviewId);
-  //   db.query(`
-  //   UPDATE reviews
-  //   SET helpfulness = helpfulness + 1
-  //   WHERE id = ${reviewId}
-  //    `,
-  //     (err) => {
-  //       callback(err)
-  //       console.log(err)
-  //     }
-  //   )
-  // },
-  putHelpful: function(reviewId, cb){
-    db.query(
-      `UPDATE reviews SET helpfulness = helpfulness + 1 WHERE id=${reviewId};`,
-      (err) => {cb(err)});
+  putHelpful: function(reviewId,callback){
+   // console.log('test: ',reviewId);
+    db.query(`
+    UPDATE reviews
+    SET helpfulness = helpfulness + 1
+    WHERE id = ${reviewId}
+     `,
+      (err) => {
+        callback(err)
+        console.log(err)
+      }
+    )
   },
 
-  putReport: function(reviewId, cb){
-    db.query(
-      `UPDATE reviews SET reported = True WHERE id = ${reviewId}`,
-    (err) => {cb(err)});
+  putReport:function(reviewId,callback){
+    db.query(`
+    UPDATE reviews
+    SET reported = true
+    WHERE id = ${reviewId}
+     `,
+     (err) => {
+        callback(err);
+    })
   },
-  // putReport:function(reviewId,callback){
-  //   console.log('test reported: ',reviewId);
-  //   db.query(`
-  //   UPDATE reviews
-  //   SET reported = true
-  //   WHERE id = ${reviewId}
-  //    `,
-  //    (err) => {
-  //       callback(err);
-  //   })
-  // },
 
   postReview: async function(req){
   const date = Date.now();
