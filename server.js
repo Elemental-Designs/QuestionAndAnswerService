@@ -25,9 +25,6 @@ app.put('/reviews/:review_id/helpful', (req, res) => {
   controller.putHelpful(req, res);
 });
 
-// app.put('/reviews/:review_id/report', (req, res) => {
-//   controller.putReport(req, res);
-// });
 app.put('/reviews/:review_id/report', (req, res) => {
   controller.putReport(req, res);
 });

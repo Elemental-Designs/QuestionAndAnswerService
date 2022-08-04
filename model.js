@@ -36,6 +36,22 @@ module.exports = {
   },
 
   getMetaData: function(id,callback){
+  //   const queryArray = [];
+  //  queryArray.push(db.query(`SELECT rating, COUNT(*) as rateCount FROM reviews WHERE product_id = ${id} GROUP BY rating`));
+
+  //   queryArray.push(db.query(`SELECT recommend, COUNT(*) as recommendCount FROM reviews  WHERE product_id = ${id} GROUP BY recommend`));
+
+  //   queryArray.push(db.query(`SELECT c.name, AVG(cr.value) as avg_score
+  //    FROM characteristic_reviews cr
+  //    INNER JOIN characteristics c
+  //    ON c.id = cr.characteristic_id
+  //    WHERE c.product_id  = ${id}
+  //    GROUP BY c.name
+  //   `));
+  //   return Promise.all(queryArray)
+  //   .then(()=>callback({}))
+  //   .catch((err)=>callback(err));
+
     db.query(`
     SELECT
       ${id} AS product_id,

@@ -10,7 +10,7 @@ describe("GET/reviews", function () {
     expect(response.body.result.length).to.eql(5);
     const attributes = response.body;
     expect(attributes).to.include.keys("product_id","page","count","result");
-   expect(attributes.product_id).to.eql('40344');
+   expect(attributes.product_id).to.eql(40344);
    expect(attributes.result[0].rating).to.eql(1);
    expect(attributes.result[0].helpfulness).to.eql(21);
   })

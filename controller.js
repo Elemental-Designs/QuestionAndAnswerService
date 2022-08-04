@@ -3,9 +3,9 @@ const model = require('./model.js');
 module.exports = {
   getReviews: function(req,res){
    // console.log(req.query);
-   const product_id = req.query.product_id;
-   const page = req.query.page || 1;
-   const count = req.query.count || 5;
+   const product_id = Number(req.query.product_id);
+   const page = Number(req.query.page) || 1;
+   const count = Number(req.query.count) || 5;
    const sort = req.query.sort ||"newest";
    model.get({page,count,sort,product_id},(err,data)=>{
     if(err){
@@ -24,7 +24,7 @@ module.exports = {
         res.status(400).send('Error during get metadata');
       }
       else{
-        res.send(200).json(data);
+        res.json(data);
       }
     });
   },
@@ -62,8 +62,9 @@ module.exports = {
     {
       res.sendStatus(201)})
    // res.status(201).send("Successfully")})
+   //res.status(200).end();
     .catch(()=>{
-      res.status(400).send("Err")});
+      res.status(500).send("Err")});
   }
 
 };

@@ -1,7 +1,9 @@
 {
   "scripts": {
     "start": "nodemon server /server.js",
-    "test": "npx mocha tests/APItest.js"
+    "test": "npx mocha tests/APItest.js",
+    "test_load": "npx artillery run tests/loadTest.yml",
+    "getMeta_load": "npx artillery run tests/getMetaLoad.yml"
   },
   "dependencies": {
     "chai": "^4.3.6",
