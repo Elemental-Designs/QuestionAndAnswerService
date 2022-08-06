@@ -36,7 +36,9 @@ module.exports = {
   },
 
   getMetaData: function(id,callback){
-  //   const queryArray = [];
+  // const data = {};
+  // data.product_id=id;
+  // data.rating=
   //  queryArray.push(db.query(`SELECT rating, COUNT(*) as rateCount FROM reviews WHERE product_id = ${id} GROUP BY rating`));
 
   //   queryArray.push(db.query(`SELECT recommend, COUNT(*) as recommendCount FROM reviews  WHERE product_id = ${id} GROUP BY recommend`));
@@ -147,8 +149,8 @@ module.exports = {
     req.body.name,
     req.body.email,
     ""
-  ]);
-
+  ])
+  //console.log(result.rows);//[ { id: 5775015 } ]
   const reviewID = result.rows[0].id;
   if (req.body.photos.length) {
     req.body.photos.forEach((url) => {
@@ -165,6 +167,14 @@ module.exports = {
     });
   }
   const chars = req.body.characteristics;
+  // {
+  //   Size: { id: 14, value: 5 },
+  //   Width: { id: 15, value: 4 },
+  //   Comfort: { id: 16, value: 3 },
+  //   Quality: { id: 17, value: 4 }
+  // }
+ // console.log("Object1 :", Object.keys(chars));
+//Object1 : [ 'Size', 'Width', 'Comfort', 'Quality' ]
   if (Object.keys(chars).length) {
     Object.keys(chars).forEach((char) => {
       queryArray.push(db.query(`
