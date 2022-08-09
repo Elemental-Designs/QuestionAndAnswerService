@@ -33,4 +33,8 @@ Rating and Reviews is to build a RESTful API service for a retail web-portal.
 
 ## Optimization
 - Create Index for DB to improve query time
-- Using Load Balancer to increase active Visual Users, decrease error rate and latency.
+- Using Load Balancer to increase active Visual Users, decrease error rate and latency
+  
+|Before|After|
+|------------------|-------------------|
+|<img width="1500" alt="screenshot" src="https://user-images.githubusercontent.com/87592168/183582592-58526cbb-defa-49cf-8bb6-7f488f221dbe.jpg">|<img width="1500" alt="screenshot" src="https://user-images.githubusercontent.com/87592168/183582681-140f88a5-3186-4b16-8a2c-2b1c05108383.jpg">|
